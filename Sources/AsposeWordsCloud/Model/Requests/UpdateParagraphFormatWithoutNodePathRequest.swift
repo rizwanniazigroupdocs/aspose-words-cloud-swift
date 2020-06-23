@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="UpdateParagraphFormatRequest.swift">
+ * <copyright company="Aspose" file="UpdateParagraphFormatWithoutNodePathRequest.swift">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,11 +27,10 @@
 
 import Foundation
 
-// Request model for updateParagraphFormat operation.
-public class UpdateParagraphFormatRequest {
+// Request model for updateParagraphFormatWithoutNodePath operation.
+public class UpdateParagraphFormatWithoutNodePathRequest {
     private let name : String;
     private let dto : ParagraphFormat;
-    private let nodePath : String;
     private let index : Int;
     private let folder : String?;
     private let storage : String?;
@@ -44,7 +43,6 @@ public class UpdateParagraphFormatRequest {
     private enum CodingKeys: String, CodingKey {
         case name;
         case dto;
-        case nodePath;
         case index;
         case folder;
         case storage;
@@ -56,11 +54,10 @@ public class UpdateParagraphFormatRequest {
         case invalidCodingKey;
     }
 
-    // Initializes a new instance of the UpdateParagraphFormatRequest class.
-    public init(name : String, dto : ParagraphFormat, nodePath : String, index : Int, folder : String? = nil, storage : String? = nil, loadEncoding : String? = nil, password : String? = nil, destFileName : String? = nil, revisionAuthor : String? = nil, revisionDateTime : String? = nil) {
+    // Initializes a new instance of the UpdateParagraphFormatWithoutNodePathRequest class.
+    public init(name : String, dto : ParagraphFormat, index : Int, folder : String? = nil, storage : String? = nil, loadEncoding : String? = nil, password : String? = nil, destFileName : String? = nil, revisionAuthor : String? = nil, revisionDateTime : String? = nil) {
         self.name = name;
         self.dto = dto;
-        self.nodePath = nodePath;
         self.index = index;
         self.folder = folder;
         self.storage = storage;
@@ -79,11 +76,6 @@ public class UpdateParagraphFormatRequest {
     // Paragraph format object.
     public func getDto() -> ParagraphFormat {
         return self.dto;
-    }
-
-    // Path to the node which contains paragraphs.
-    public func getNodePath() -> String {
-        return self.nodePath;
     }
 
     // Object index.
