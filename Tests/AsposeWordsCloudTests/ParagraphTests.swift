@@ -85,7 +85,7 @@ class ParagraphTests: BaseTestContext {
 
     // Test for getting paragraph online.
     func testGetDocumentParagraphOnline() throws {
-      let request = GetParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "sections/0", index: 0);
+      let request = GetParagraphOnlineRequest(nodePath: "sections/0", document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, index: 0);
       _ = try super.getApi().getParagraphOnline(request: request);
     }
 
@@ -111,7 +111,7 @@ class ParagraphTests: BaseTestContext {
 
     // Test for getting all paragraphs online.
     func testGetDocumentParagraphsOnline() throws {
-      let request = GetParagraphsOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "sections/0");
+      let request = GetParagraphsOnlineRequest(nodePath: "sections/0", document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!);
       _ = try super.getApi().getParagraphsOnline(request: request);
     }
 
@@ -189,7 +189,7 @@ class ParagraphTests: BaseTestContext {
       requestParagraph.setText(text: "This is a new paragraph for your document");
 
 
-      let request = InsertParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, paragraph: requestParagraph, nodePath: "sections/0");
+      let request = InsertParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "sections/0", paragraph: requestParagraph);
       _ = try super.getApi().insertParagraphOnline(request: request);
     }
 
@@ -273,7 +273,7 @@ class ParagraphTests: BaseTestContext {
 
     // Test for deleting  a paragraph online.
     func testDeleteParagraphOnline() throws {
-      let request = DeleteParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "", index: 0);
+      let request = DeleteParagraphOnlineRequest(nodePath: "", document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, index: 0);
       _ = try super.getApi().deleteParagraphOnline(request: request);
     }
 
