@@ -60,6 +60,10 @@ class AppendDocumentTests: BaseTestContext {
 
     // Test for appending document online.
     func testAppendDocumentOnline() throws {
+      let remoteFileName = "TestAppendDocument.docx";
+
+      try super.uploadFile(fileContent: getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false), path: remoteDataFolder + "/" + remoteFileName);
+
       let requestDocumentListDocumentEntries0 = DocumentEntry();
       requestDocumentListDocumentEntries0.setHref(href: remoteDataFolder + "/" + remoteFileName);
       requestDocumentListDocumentEntries0.setImportFormatMode(importFormatMode: "KeepSourceFormatting");
