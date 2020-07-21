@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="InsertParagraphRequest.swift">
+ * <copyright company="Aspose" file="DeleteParagraphOnlineRequest.swift">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,53 +27,39 @@
 
 import Foundation
 
-// Request model for insertParagraph operation.
-public class InsertParagraphRequest {
-    private let name : String;
+// Request model for deleteParagraphOnline operation.
+public class DeleteParagraphOnlineRequest {
     private let nodePath : String;
-    private let paragraph : ParagraphInsert;
-    private let folder : String?;
-    private let storage : String?;
+    private let document : InputStream;
+    private let index : Int;
     private let loadEncoding : String?;
     private let password : String?;
     private let destFileName : String?;
     private let revisionAuthor : String?;
     private let revisionDateTime : String?;
-    private let insertBeforeNode : String?;
 
     private enum CodingKeys: String, CodingKey {
-        case name;
         case nodePath;
-        case paragraph;
-        case folder;
-        case storage;
+        case document;
+        case index;
         case loadEncoding;
         case password;
         case destFileName;
         case revisionAuthor;
         case revisionDateTime;
-        case insertBeforeNode;
         case invalidCodingKey;
     }
 
-    // Initializes a new instance of the InsertParagraphRequest class.
-    public init(name : String, nodePath : String, paragraph : ParagraphInsert, folder : String? = nil, storage : String? = nil, loadEncoding : String? = nil, password : String? = nil, destFileName : String? = nil, revisionAuthor : String? = nil, revisionDateTime : String? = nil, insertBeforeNode : String? = nil) {
-        self.name = name;
+    // Initializes a new instance of the DeleteParagraphOnlineRequest class.
+    public init(nodePath : String, document : InputStream, index : Int, loadEncoding : String? = nil, password : String? = nil, destFileName : String? = nil, revisionAuthor : String? = nil, revisionDateTime : String? = nil) {
         self.nodePath = nodePath;
-        self.paragraph = paragraph;
-        self.folder = folder;
-        self.storage = storage;
+        self.document = document;
+        self.index = index;
         self.loadEncoding = loadEncoding;
         self.password = password;
         self.destFileName = destFileName;
         self.revisionAuthor = revisionAuthor;
         self.revisionDateTime = revisionDateTime;
-        self.insertBeforeNode = insertBeforeNode;
-    }
-
-    // The document name.
-    public func getName() -> String {
-        return self.name;
     }
 
     // Path to the node which contains paragraphs.
@@ -81,19 +67,14 @@ public class InsertParagraphRequest {
         return self.nodePath;
     }
 
-    // Paragraph data.
-    public func getParagraph() -> ParagraphInsert {
-        return self.paragraph;
+    // The document.
+    public func getDocument() -> InputStream {
+        return self.document;
     }
 
-    // Original document folder.
-    public func getFolder() -> String? {
-        return self.folder;
-    }
-
-    // Original document storage.
-    public func getStorage() -> String? {
-        return self.storage;
+    // Object index.
+    public func getIndex() -> Int {
+        return self.index;
     }
 
     // Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
@@ -119,10 +100,5 @@ public class InsertParagraphRequest {
     // The date and time to use for revisions.
     public func getRevisionDateTime() -> String? {
         return self.revisionDateTime;
-    }
-
-    // Paragraph will be inserted before node with index.
-    public func getInsertBeforeNode() -> String? {
-        return self.insertBeforeNode;
     }
 }

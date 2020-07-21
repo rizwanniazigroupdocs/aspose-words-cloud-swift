@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="ConvertDocumentRequest.swift">
+ * <copyright company="Aspose" file="SaveAsOnlineRequest.swift">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,58 +27,34 @@
 
 import Foundation
 
-// Request model for convertDocument operation.
-public class ConvertDocumentRequest {
+// Request model for saveAsOnline operation.
+public class SaveAsOnlineRequest {
     private let document : InputStream;
-    private let format : String;
-    private let outPath : String?;
-    private let fileNameFieldValue : String?;
-    private let storage : String?;
+    private let saveOptionsData : SaveOptionsData;
     private let fontsLocation : String?;
 
     private enum CodingKeys: String, CodingKey {
         case document;
-        case format;
-        case outPath;
-        case fileNameFieldValue;
-        case storage;
+        case saveOptionsData;
         case fontsLocation;
         case invalidCodingKey;
     }
 
-    // Initializes a new instance of the ConvertDocumentRequest class.
-    public init(document : InputStream, format : String, outPath : String? = nil, fileNameFieldValue : String? = nil, storage : String? = nil, fontsLocation : String? = nil) {
+    // Initializes a new instance of the SaveAsOnlineRequest class.
+    public init(document : InputStream, saveOptionsData : SaveOptionsData, fontsLocation : String? = nil) {
         self.document = document;
-        self.format = format;
-        self.outPath = outPath;
-        self.fileNameFieldValue = fileNameFieldValue;
-        self.storage = storage;
+        self.saveOptionsData = saveOptionsData;
         self.fontsLocation = fontsLocation;
     }
 
-    // Converting document.
+    // The document.
     public func getDocument() -> InputStream {
         return self.document;
     }
 
-    // Format to convert.
-    public func getFormat() -> String {
-        return self.format;
-    }
-
-    // Path for saving operation result to the local storage.
-    public func getOutPath() -> String? {
-        return self.outPath;
-    }
-
-    // This file name will be used when resulting document has dynamic field for document file name {filename}. If it is not set, "sourceFilename" will be used instead.
-    public func getFileNameFieldValue() -> String? {
-        return self.fileNameFieldValue;
-    }
-
-    // Original document storage.
-    public func getStorage() -> String? {
-        return self.storage;
+    // Save options.
+    public func getSaveOptionsData() -> SaveOptionsData {
+        return self.saveOptionsData;
     }
 
     // Folder in filestorage with custom fonts.

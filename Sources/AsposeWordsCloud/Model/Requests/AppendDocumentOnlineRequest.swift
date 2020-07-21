@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="GetDocumentFieldNamesOnlineRequest.swift">
+ * <copyright company="Aspose" file="AppendDocumentOnlineRequest.swift">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,21 +27,21 @@
 
 import Foundation
 
-// Request model for getDocumentFieldNamesOnline operation.
-public class GetDocumentFieldNamesOnlineRequest {
+// Request model for appendDocumentOnline operation.
+public class AppendDocumentOnlineRequest {
     private let document : InputStream;
-    private let useNonMergeFields : Bool?;
+    private let documentList : DocumentEntryList;
 
     private enum CodingKeys: String, CodingKey {
         case document;
-        case useNonMergeFields;
+        case documentList;
         case invalidCodingKey;
     }
 
-    // Initializes a new instance of the GetDocumentFieldNamesOnlineRequest class.
-    public init(document : InputStream, useNonMergeFields : Bool? = nil) {
+    // Initializes a new instance of the AppendDocumentOnlineRequest class.
+    public init(document : InputStream, documentList : DocumentEntryList) {
         self.document = document;
-        self.useNonMergeFields = useNonMergeFields;
+        self.documentList = documentList;
     }
 
     // The document.
@@ -49,8 +49,8 @@ public class GetDocumentFieldNamesOnlineRequest {
         return self.document;
     }
 
-    // If true, result includes "mustache" field names.
-    public func getUseNonMergeFields() -> Bool? {
-        return self.useNonMergeFields;
+    // <see cref="DocumentEntryList"/> with a list of documents to append.
+    public func getDocumentList() -> DocumentEntryList {
+        return self.documentList;
     }
 }

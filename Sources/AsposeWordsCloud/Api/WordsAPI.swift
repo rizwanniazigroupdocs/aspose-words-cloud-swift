@@ -216,6 +216,56 @@ public class WordsAPI {
         return responseObject!;
     }
 
+    // Async representation of appendDocumentOnline method
+    // Appends documents to original document.
+    public func appendDocumentOnline(request : AppendDocumentOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
+        do {
+            var rawPath = "/words/online/appendDocument";
+            rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
+
+            let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
+            var formParams : [RequestFormParam] = [];
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
+
+            formParams.append(RequestFormParam(name: "documentList", body: try ObjectSerializer.serialize(value: request.getDocumentList())));
+
+
+            apiInvoker.invoke(
+                url: urlPath,
+                method: "PUT",
+                body: nil,
+                headers: nil,
+                formParams: formParams,
+                callback: { response, error in
+                    callback(response, error);
+                }
+            );
+        }
+        catch let error {
+            callback(nil, error);
+        }
+    }
+
+    // Sync representation of appendDocumentOnline method
+    // Appends documents to original document.
+    public func appendDocumentOnline(request : AppendDocumentOnlineRequest) throws -> Data {
+        let semaphore = DispatchSemaphore(value: 0);
+        var responseObject : Data? = nil;
+        var responseError : Error? = nil;
+        self.appendDocumentOnline(request : request, callback: { response, error in
+            responseObject = response;
+            responseError = error;
+            semaphore.signal();
+        });
+
+        _ = semaphore.wait();
+
+        if (responseError != nil) {
+            throw responseError!;
+        }
+        return responseObject!;
+    }
+
     // Async representation of applyStyleToDocumentElement method
     // Apply a style to the document node.
     public func applyStyleToDocumentElement(request : ApplyStyleToDocumentElementRequest, callback : @escaping (_ response : WordsResponse?, _ error : Error?) -> ()) {
@@ -700,16 +750,16 @@ public class WordsAPI {
             var queryItems : [URLQueryItem] = [];
             queryItems.append(URLQueryItem(name: "format", value: try ObjectSerializer.serializeToString(value: request.getFormat())));
 
-            if (request.getStorage() != nil) {
-                queryItems.append(URLQueryItem(name: "storage", value: try ObjectSerializer.serializeToString(value: request.getStorage()!)));
-            }
-
             if (request.getOutPath() != nil) {
                 queryItems.append(URLQueryItem(name: "outPath", value: try ObjectSerializer.serializeToString(value: request.getOutPath()!)));
             }
 
             if (request.getFileNameFieldValue() != nil) {
                 queryItems.append(URLQueryItem(name: "fileNameFieldValue", value: try ObjectSerializer.serializeToString(value: request.getFileNameFieldValue()!)));
+            }
+
+            if (request.getStorage() != nil) {
+                queryItems.append(URLQueryItem(name: "storage", value: try ObjectSerializer.serializeToString(value: request.getStorage()!)));
             }
 
             if (request.getFontsLocation() != nil) {
@@ -983,16 +1033,16 @@ public class WordsAPI {
             let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
             var urlBuilder = URLComponents(url: urlPath, resolvingAgainstBaseURL: false)!;
             var queryItems : [URLQueryItem] = [];
-            if (request.getStorage() != nil) {
-                queryItems.append(URLQueryItem(name: "storage", value: try ObjectSerializer.serializeToString(value: request.getStorage()!)));
-            }
-
             if (request.getFileName() != nil) {
                 queryItems.append(URLQueryItem(name: "fileName", value: try ObjectSerializer.serializeToString(value: request.getFileName()!)));
             }
 
             if (request.getFolder() != nil) {
                 queryItems.append(URLQueryItem(name: "folder", value: try ObjectSerializer.serializeToString(value: request.getFolder()!)));
+            }
+
+            if (request.getStorage() != nil) {
+                queryItems.append(URLQueryItem(name: "storage", value: try ObjectSerializer.serializeToString(value: request.getStorage()!)));
             }
 
             if (queryItems.count > 0) {
@@ -3271,6 +3321,83 @@ public class WordsAPI {
         var responseObject : ParagraphListFormatResponse? = nil;
         var responseError : Error? = nil;
         self.deleteParagraphListFormatWithoutNodePath(request : request, callback: { response, error in
+            responseObject = response;
+            responseError = error;
+            semaphore.signal();
+        });
+
+        _ = semaphore.wait();
+
+        if (responseError != nil) {
+            throw responseError!;
+        }
+        return responseObject!;
+    }
+
+    // Async representation of deleteParagraphOnline method
+    // Removes paragraph from section.
+    public func deleteParagraphOnline(request : DeleteParagraphOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
+        do {
+            var rawPath = "/words/online/{nodePath}/paragraphs/{index}";
+            rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()));
+
+            rawPath = rawPath.replacingOccurrences(of: "{index}", with: try ObjectSerializer.serializeToString(value: request.getIndex()));
+
+            rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
+
+            let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
+            var urlBuilder = URLComponents(url: urlPath, resolvingAgainstBaseURL: false)!;
+            var queryItems : [URLQueryItem] = [];
+            if (request.getLoadEncoding() != nil) {
+                queryItems.append(URLQueryItem(name: "loadEncoding", value: try ObjectSerializer.serializeToString(value: request.getLoadEncoding()!)));
+            }
+
+            if (request.getPassword() != nil) {
+                queryItems.append(URLQueryItem(name: "password", value: try ObjectSerializer.serializeToString(value: request.getPassword()!)));
+            }
+
+            if (request.getDestFileName() != nil) {
+                queryItems.append(URLQueryItem(name: "destFileName", value: try ObjectSerializer.serializeToString(value: request.getDestFileName()!)));
+            }
+
+            if (request.getRevisionAuthor() != nil) {
+                queryItems.append(URLQueryItem(name: "revisionAuthor", value: try ObjectSerializer.serializeToString(value: request.getRevisionAuthor()!)));
+            }
+
+            if (request.getRevisionDateTime() != nil) {
+                queryItems.append(URLQueryItem(name: "revisionDateTime", value: try ObjectSerializer.serializeToString(value: request.getRevisionDateTime()!)));
+            }
+
+            if (queryItems.count > 0) {
+                urlBuilder.queryItems = queryItems;
+            }
+            var formParams : [RequestFormParam] = [];
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
+
+
+            apiInvoker.invoke(
+                url: urlBuilder.url!,
+                method: "DELETE",
+                body: nil,
+                headers: nil,
+                formParams: formParams,
+                callback: { response, error in
+                    callback(response, error);
+                }
+            );
+        }
+        catch let error {
+            callback(nil, error);
+        }
+    }
+
+    // Sync representation of deleteParagraphOnline method
+    // Removes paragraph from section.
+    public func deleteParagraphOnline(request : DeleteParagraphOnlineRequest) throws -> Data {
+        let semaphore = DispatchSemaphore(value: 0);
+        var responseObject : Data? = nil;
+        var responseError : Error? = nil;
+        self.deleteParagraphOnline(request : request, callback: { response, error in
             responseObject = response;
             responseError = error;
             semaphore.signal();
@@ -5647,9 +5774,9 @@ public class WordsAPI {
 
     // Async representation of getDocumentFieldNamesOnline method
     // Reads document field names.
-    public func getDocumentFieldNamesOnline(request : GetDocumentFieldNamesOnlineRequest, callback : @escaping (_ response : FieldNamesResponse?, _ error : Error?) -> ()) {
+    public func getDocumentFieldNamesOnline(request : GetDocumentFieldNamesOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
         do {
-            var rawPath = "/words/mailMerge/FieldNames";
+            var rawPath = "/words/online/mailMerge/FieldNames";
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
             let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
@@ -5663,27 +5790,17 @@ public class WordsAPI {
                 urlBuilder.queryItems = queryItems;
             }
             var formParams : [RequestFormParam] = [];
-            formParams.append(RequestFormParam(name: "template", body: try ObjectSerializer.serializeFile(value: request.getTemplate())));
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
 
 
             apiInvoker.invoke(
                 url: urlBuilder.url!,
-                method: "PUT",
+                method: "GET",
                 body: nil,
                 headers: nil,
                 formParams: formParams,
                 callback: { response, error in
-                    var responseObject : FieldNamesResponse? = nil;
-                    var responseError = error;
-                    if (responseError == nil) {
-                        do {
-                            responseObject = try ObjectSerializer.deserialize(type: FieldNamesResponse.self, from: response!);
-                        }
-                        catch let deserializeError {
-                            responseError = deserializeError;
-                        }
-                    }
-                    callback(responseObject, responseError);
+                    callback(response, error);
                 }
             );
         }
@@ -5694,9 +5811,9 @@ public class WordsAPI {
 
     // Sync representation of getDocumentFieldNamesOnline method
     // Reads document field names.
-    public func getDocumentFieldNamesOnline(request : GetDocumentFieldNamesOnlineRequest) throws -> FieldNamesResponse {
+    public func getDocumentFieldNamesOnline(request : GetDocumentFieldNamesOnlineRequest) throws -> Data {
         let semaphore = DispatchSemaphore(value: 0);
-        var responseObject : FieldNamesResponse? = nil;
+        var responseObject : Data? = nil;
         var responseError : Error? = nil;
         self.getDocumentFieldNamesOnline(request : request, callback: { response, error in
             responseObject = response;
@@ -6183,6 +6300,71 @@ public class WordsAPI {
         var responseObject : StatDataResponse? = nil;
         var responseError : Error? = nil;
         self.getDocumentStatistics(request : request, callback: { response, error in
+            responseObject = response;
+            responseError = error;
+            semaphore.signal();
+        });
+
+        _ = semaphore.wait();
+
+        if (responseError != nil) {
+            throw responseError!;
+        }
+        return responseObject!;
+    }
+
+    // Async representation of getDocumentStatisticsOnline method
+    // Reads document statistics.
+    public func getDocumentStatisticsOnline(request : GetDocumentStatisticsOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
+        do {
+            var rawPath = "/words/online/statistics";
+            rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
+
+            let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
+            var urlBuilder = URLComponents(url: urlPath, resolvingAgainstBaseURL: false)!;
+            var queryItems : [URLQueryItem] = [];
+            if (request.getIncludeComments() != nil) {
+                queryItems.append(URLQueryItem(name: "includeComments", value: try ObjectSerializer.serializeToString(value: request.getIncludeComments()!)));
+            }
+
+            if (request.getIncludeFootnotes() != nil) {
+                queryItems.append(URLQueryItem(name: "includeFootnotes", value: try ObjectSerializer.serializeToString(value: request.getIncludeFootnotes()!)));
+            }
+
+            if (request.getIncludeTextInShapes() != nil) {
+                queryItems.append(URLQueryItem(name: "includeTextInShapes", value: try ObjectSerializer.serializeToString(value: request.getIncludeTextInShapes()!)));
+            }
+
+            if (queryItems.count > 0) {
+                urlBuilder.queryItems = queryItems;
+            }
+            var formParams : [RequestFormParam] = [];
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
+
+
+            apiInvoker.invoke(
+                url: urlBuilder.url!,
+                method: "GET",
+                body: nil,
+                headers: nil,
+                formParams: formParams,
+                callback: { response, error in
+                    callback(response, error);
+                }
+            );
+        }
+        catch let error {
+            callback(nil, error);
+        }
+    }
+
+    // Sync representation of getDocumentStatisticsOnline method
+    // Reads document statistics.
+    public func getDocumentStatisticsOnline(request : GetDocumentStatisticsOnlineRequest) throws -> Data {
+        let semaphore = DispatchSemaphore(value: 0);
+        var responseObject : Data? = nil;
+        var responseError : Error? = nil;
+        self.getDocumentStatisticsOnline(request : request, callback: { response, error in
             responseObject = response;
             responseError = error;
             semaphore.signal();
@@ -8034,7 +8216,7 @@ public class WordsAPI {
 
     // Async representation of getParagraph method
     // This resource represents one of the paragraphs contained in the document.
-    public func getParagraph(request : GetParagraphRequest, callback : @escaping (_ response : ParagraphResponse?, _ error : Error?) -> ()) {
+    public func getParagraph(request : GetParagraphRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
         do {
             var rawPath = "/words/{name}/{nodePath}/paragraphs/{index}";
             rawPath = rawPath.replacingOccurrences(of: "{name}", with: try ObjectSerializer.serializeToString(value: request.getName()));
@@ -8075,17 +8257,7 @@ public class WordsAPI {
                 headers: nil,
                 formParams: nil,
                 callback: { response, error in
-                    var responseObject : ParagraphResponse? = nil;
-                    var responseError = error;
-                    if (responseError == nil) {
-                        do {
-                            responseObject = try ObjectSerializer.deserialize(type: ParagraphResponse.self, from: response!);
-                        }
-                        catch let deserializeError {
-                            responseError = deserializeError;
-                        }
-                    }
-                    callback(responseObject, responseError);
+                    callback(response, error);
                 }
             );
         }
@@ -8096,9 +8268,9 @@ public class WordsAPI {
 
     // Sync representation of getParagraph method
     // This resource represents one of the paragraphs contained in the document.
-    public func getParagraph(request : GetParagraphRequest) throws -> ParagraphResponse {
+    public func getParagraph(request : GetParagraphRequest) throws -> Data {
         let semaphore = DispatchSemaphore(value: 0);
-        var responseObject : ParagraphResponse? = nil;
+        var responseObject : Data? = nil;
         var responseError : Error? = nil;
         self.getParagraph(request : request, callback: { response, error in
             responseObject = response;
@@ -8438,9 +8610,74 @@ public class WordsAPI {
         return responseObject!;
     }
 
+    // Async representation of getParagraphOnline method
+    // This resource represents one of the paragraphs contained in the document.
+    public func getParagraphOnline(request : GetParagraphOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
+        do {
+            var rawPath = "/words/online/{nodePath}/paragraphs/{index}";
+            rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()));
+
+            rawPath = rawPath.replacingOccurrences(of: "{index}", with: try ObjectSerializer.serializeToString(value: request.getIndex()));
+
+            rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
+
+            let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
+            var urlBuilder = URLComponents(url: urlPath, resolvingAgainstBaseURL: false)!;
+            var queryItems : [URLQueryItem] = [];
+            if (request.getLoadEncoding() != nil) {
+                queryItems.append(URLQueryItem(name: "loadEncoding", value: try ObjectSerializer.serializeToString(value: request.getLoadEncoding()!)));
+            }
+
+            if (request.getPassword() != nil) {
+                queryItems.append(URLQueryItem(name: "password", value: try ObjectSerializer.serializeToString(value: request.getPassword()!)));
+            }
+
+            if (queryItems.count > 0) {
+                urlBuilder.queryItems = queryItems;
+            }
+            var formParams : [RequestFormParam] = [];
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
+
+
+            apiInvoker.invoke(
+                url: urlBuilder.url!,
+                method: "GET",
+                body: nil,
+                headers: nil,
+                formParams: formParams,
+                callback: { response, error in
+                    callback(response, error);
+                }
+            );
+        }
+        catch let error {
+            callback(nil, error);
+        }
+    }
+
+    // Sync representation of getParagraphOnline method
+    // This resource represents one of the paragraphs contained in the document.
+    public func getParagraphOnline(request : GetParagraphOnlineRequest) throws -> Data {
+        let semaphore = DispatchSemaphore(value: 0);
+        var responseObject : Data? = nil;
+        var responseError : Error? = nil;
+        self.getParagraphOnline(request : request, callback: { response, error in
+            responseObject = response;
+            responseError = error;
+            semaphore.signal();
+        });
+
+        _ = semaphore.wait();
+
+        if (responseError != nil) {
+            throw responseError!;
+        }
+        return responseObject!;
+    }
+
     // Async representation of getParagraphs method
     // Returns a list of paragraphs that are contained in the document.
-    public func getParagraphs(request : GetParagraphsRequest, callback : @escaping (_ response : ParagraphLinkCollectionResponse?, _ error : Error?) -> ()) {
+    public func getParagraphs(request : GetParagraphsRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
         do {
             var rawPath = "/words/{name}/{nodePath}/paragraphs";
             rawPath = rawPath.replacingOccurrences(of: "{name}", with: try ObjectSerializer.serializeToString(value: request.getName()));
@@ -8479,17 +8716,7 @@ public class WordsAPI {
                 headers: nil,
                 formParams: nil,
                 callback: { response, error in
-                    var responseObject : ParagraphLinkCollectionResponse? = nil;
-                    var responseError = error;
-                    if (responseError == nil) {
-                        do {
-                            responseObject = try ObjectSerializer.deserialize(type: ParagraphLinkCollectionResponse.self, from: response!);
-                        }
-                        catch let deserializeError {
-                            responseError = deserializeError;
-                        }
-                    }
-                    callback(responseObject, responseError);
+                    callback(response, error);
                 }
             );
         }
@@ -8500,9 +8727,9 @@ public class WordsAPI {
 
     // Sync representation of getParagraphs method
     // Returns a list of paragraphs that are contained in the document.
-    public func getParagraphs(request : GetParagraphsRequest) throws -> ParagraphLinkCollectionResponse {
+    public func getParagraphs(request : GetParagraphsRequest) throws -> Data {
         let semaphore = DispatchSemaphore(value: 0);
-        var responseObject : ParagraphLinkCollectionResponse? = nil;
+        var responseObject : Data? = nil;
         var responseError : Error? = nil;
         self.getParagraphs(request : request, callback: { response, error in
             responseObject = response;
@@ -8518,9 +8745,72 @@ public class WordsAPI {
         return responseObject!;
     }
 
+    // Async representation of getParagraphsOnline method
+    // Returns a list of paragraphs that are contained in the document.
+    public func getParagraphsOnline(request : GetParagraphsOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
+        do {
+            var rawPath = "/words/online/{nodePath}/paragraphs";
+            rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()));
+
+            rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
+
+            let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
+            var urlBuilder = URLComponents(url: urlPath, resolvingAgainstBaseURL: false)!;
+            var queryItems : [URLQueryItem] = [];
+            if (request.getLoadEncoding() != nil) {
+                queryItems.append(URLQueryItem(name: "loadEncoding", value: try ObjectSerializer.serializeToString(value: request.getLoadEncoding()!)));
+            }
+
+            if (request.getPassword() != nil) {
+                queryItems.append(URLQueryItem(name: "password", value: try ObjectSerializer.serializeToString(value: request.getPassword()!)));
+            }
+
+            if (queryItems.count > 0) {
+                urlBuilder.queryItems = queryItems;
+            }
+            var formParams : [RequestFormParam] = [];
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
+
+
+            apiInvoker.invoke(
+                url: urlBuilder.url!,
+                method: "GET",
+                body: nil,
+                headers: nil,
+                formParams: formParams,
+                callback: { response, error in
+                    callback(response, error);
+                }
+            );
+        }
+        catch let error {
+            callback(nil, error);
+        }
+    }
+
+    // Sync representation of getParagraphsOnline method
+    // Returns a list of paragraphs that are contained in the document.
+    public func getParagraphsOnline(request : GetParagraphsOnlineRequest) throws -> Data {
+        let semaphore = DispatchSemaphore(value: 0);
+        var responseObject : Data? = nil;
+        var responseError : Error? = nil;
+        self.getParagraphsOnline(request : request, callback: { response, error in
+            responseObject = response;
+            responseError = error;
+            semaphore.signal();
+        });
+
+        _ = semaphore.wait();
+
+        if (responseError != nil) {
+            throw responseError!;
+        }
+        return responseObject!;
+    }
+
     // Async representation of getParagraphsWithoutNodePath method
     // Returns a list of paragraphs that are contained in the document.
-    public func getParagraphsWithoutNodePath(request : GetParagraphsWithoutNodePathRequest, callback : @escaping (_ response : ParagraphLinkCollectionResponse?, _ error : Error?) -> ()) {
+    public func getParagraphsWithoutNodePath(request : GetParagraphsWithoutNodePathRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
         do {
             var rawPath = "/words/{name}/paragraphs";
             rawPath = rawPath.replacingOccurrences(of: "{name}", with: try ObjectSerializer.serializeToString(value: request.getName()));
@@ -8557,17 +8847,7 @@ public class WordsAPI {
                 headers: nil,
                 formParams: nil,
                 callback: { response, error in
-                    var responseObject : ParagraphLinkCollectionResponse? = nil;
-                    var responseError = error;
-                    if (responseError == nil) {
-                        do {
-                            responseObject = try ObjectSerializer.deserialize(type: ParagraphLinkCollectionResponse.self, from: response!);
-                        }
-                        catch let deserializeError {
-                            responseError = deserializeError;
-                        }
-                    }
-                    callback(responseObject, responseError);
+                    callback(response, error);
                 }
             );
         }
@@ -8578,9 +8858,9 @@ public class WordsAPI {
 
     // Sync representation of getParagraphsWithoutNodePath method
     // Returns a list of paragraphs that are contained in the document.
-    public func getParagraphsWithoutNodePath(request : GetParagraphsWithoutNodePathRequest) throws -> ParagraphLinkCollectionResponse {
+    public func getParagraphsWithoutNodePath(request : GetParagraphsWithoutNodePathRequest) throws -> Data {
         let semaphore = DispatchSemaphore(value: 0);
-        var responseObject : ParagraphLinkCollectionResponse? = nil;
+        var responseObject : Data? = nil;
         var responseError : Error? = nil;
         self.getParagraphsWithoutNodePath(request : request, callback: { response, error in
             responseObject = response;
@@ -8760,7 +9040,7 @@ public class WordsAPI {
 
     // Async representation of getParagraphWithoutNodePath method
     // This resource represents one of the paragraphs contained in the document.
-    public func getParagraphWithoutNodePath(request : GetParagraphWithoutNodePathRequest, callback : @escaping (_ response : ParagraphResponse?, _ error : Error?) -> ()) {
+    public func getParagraphWithoutNodePath(request : GetParagraphWithoutNodePathRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
         do {
             var rawPath = "/words/{name}/paragraphs/{index}";
             rawPath = rawPath.replacingOccurrences(of: "{name}", with: try ObjectSerializer.serializeToString(value: request.getName()));
@@ -8799,17 +9079,7 @@ public class WordsAPI {
                 headers: nil,
                 formParams: nil,
                 callback: { response, error in
-                    var responseObject : ParagraphResponse? = nil;
-                    var responseError = error;
-                    if (responseError == nil) {
-                        do {
-                            responseObject = try ObjectSerializer.deserialize(type: ParagraphResponse.self, from: response!);
-                        }
-                        catch let deserializeError {
-                            responseError = deserializeError;
-                        }
-                    }
-                    callback(responseObject, responseError);
+                    callback(response, error);
                 }
             );
         }
@@ -8820,9 +9090,9 @@ public class WordsAPI {
 
     // Sync representation of getParagraphWithoutNodePath method
     // This resource represents one of the paragraphs contained in the document.
-    public func getParagraphWithoutNodePath(request : GetParagraphWithoutNodePathRequest) throws -> ParagraphResponse {
+    public func getParagraphWithoutNodePath(request : GetParagraphWithoutNodePathRequest) throws -> Data {
         let semaphore = DispatchSemaphore(value: 0);
-        var responseObject : ParagraphResponse? = nil;
+        var responseObject : Data? = nil;
         var responseError : Error? = nil;
         self.getParagraphWithoutNodePath(request : request, callback: { response, error in
             responseObject = response;
@@ -11740,7 +12010,7 @@ public class WordsAPI {
 
     // Async representation of insertParagraph method
     // Adds paragraph to document, returns added paragraph's data.
-    public func insertParagraph(request : InsertParagraphRequest, callback : @escaping (_ response : ParagraphResponse?, _ error : Error?) -> ()) {
+    public func insertParagraph(request : InsertParagraphRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
         do {
             var rawPath = "/words/{name}/{nodePath}/paragraphs";
             rawPath = rawPath.replacingOccurrences(of: "{name}", with: try ObjectSerializer.serializeToString(value: request.getName()));
@@ -11795,17 +12065,7 @@ public class WordsAPI {
                 headers: nil,
                 formParams: nil,
                 callback: { response, error in
-                    var responseObject : ParagraphResponse? = nil;
-                    var responseError = error;
-                    if (responseError == nil) {
-                        do {
-                            responseObject = try ObjectSerializer.deserialize(type: ParagraphResponse.self, from: response!);
-                        }
-                        catch let deserializeError {
-                            responseError = deserializeError;
-                        }
-                    }
-                    callback(responseObject, responseError);
+                    callback(response, error);
                 }
             );
         }
@@ -11816,9 +12076,9 @@ public class WordsAPI {
 
     // Sync representation of insertParagraph method
     // Adds paragraph to document, returns added paragraph's data.
-    public func insertParagraph(request : InsertParagraphRequest) throws -> ParagraphResponse {
+    public func insertParagraph(request : InsertParagraphRequest) throws -> Data {
         let semaphore = DispatchSemaphore(value: 0);
-        var responseObject : ParagraphResponse? = nil;
+        var responseObject : Data? = nil;
         var responseError : Error? = nil;
         self.insertParagraph(request : request, callback: { response, error in
             responseObject = response;
@@ -11834,9 +12094,90 @@ public class WordsAPI {
         return responseObject!;
     }
 
+    // Async representation of insertParagraphOnline method
+    // Adds paragraph to document, returns added paragraph's data.
+    public func insertParagraphOnline(request : InsertParagraphOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
+        do {
+            var rawPath = "/words/online/{nodePath}/paragraphs";
+            rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()));
+
+            rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
+
+            let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
+            var urlBuilder = URLComponents(url: urlPath, resolvingAgainstBaseURL: false)!;
+            var queryItems : [URLQueryItem] = [];
+            if (request.getLoadEncoding() != nil) {
+                queryItems.append(URLQueryItem(name: "loadEncoding", value: try ObjectSerializer.serializeToString(value: request.getLoadEncoding()!)));
+            }
+
+            if (request.getPassword() != nil) {
+                queryItems.append(URLQueryItem(name: "password", value: try ObjectSerializer.serializeToString(value: request.getPassword()!)));
+            }
+
+            if (request.getDestFileName() != nil) {
+                queryItems.append(URLQueryItem(name: "destFileName", value: try ObjectSerializer.serializeToString(value: request.getDestFileName()!)));
+            }
+
+            if (request.getRevisionAuthor() != nil) {
+                queryItems.append(URLQueryItem(name: "revisionAuthor", value: try ObjectSerializer.serializeToString(value: request.getRevisionAuthor()!)));
+            }
+
+            if (request.getRevisionDateTime() != nil) {
+                queryItems.append(URLQueryItem(name: "revisionDateTime", value: try ObjectSerializer.serializeToString(value: request.getRevisionDateTime()!)));
+            }
+
+            if (request.getInsertBeforeNode() != nil) {
+                queryItems.append(URLQueryItem(name: "insertBeforeNode", value: try ObjectSerializer.serializeToString(value: request.getInsertBeforeNode()!)));
+            }
+
+            if (queryItems.count > 0) {
+                urlBuilder.queryItems = queryItems;
+            }
+            var formParams : [RequestFormParam] = [];
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
+
+            formParams.append(RequestFormParam(name: "paragraph", body: try ObjectSerializer.serialize(value: request.getParagraph())));
+
+
+            apiInvoker.invoke(
+                url: urlBuilder.url!,
+                method: "POST",
+                body: nil,
+                headers: nil,
+                formParams: formParams,
+                callback: { response, error in
+                    callback(response, error);
+                }
+            );
+        }
+        catch let error {
+            callback(nil, error);
+        }
+    }
+
+    // Sync representation of insertParagraphOnline method
+    // Adds paragraph to document, returns added paragraph's data.
+    public func insertParagraphOnline(request : InsertParagraphOnlineRequest) throws -> Data {
+        let semaphore = DispatchSemaphore(value: 0);
+        var responseObject : Data? = nil;
+        var responseError : Error? = nil;
+        self.insertParagraphOnline(request : request, callback: { response, error in
+            responseObject = response;
+            responseError = error;
+            semaphore.signal();
+        });
+
+        _ = semaphore.wait();
+
+        if (responseError != nil) {
+            throw responseError!;
+        }
+        return responseObject!;
+    }
+
     // Async representation of insertParagraphWithoutNodePath method
     // Adds paragraph to document, returns added paragraph's data.
-    public func insertParagraphWithoutNodePath(request : InsertParagraphWithoutNodePathRequest, callback : @escaping (_ response : ParagraphResponse?, _ error : Error?) -> ()) {
+    public func insertParagraphWithoutNodePath(request : InsertParagraphWithoutNodePathRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
         do {
             var rawPath = "/words/{name}/paragraphs";
             rawPath = rawPath.replacingOccurrences(of: "{name}", with: try ObjectSerializer.serializeToString(value: request.getName()));
@@ -11889,17 +12230,7 @@ public class WordsAPI {
                 headers: nil,
                 formParams: nil,
                 callback: { response, error in
-                    var responseObject : ParagraphResponse? = nil;
-                    var responseError = error;
-                    if (responseError == nil) {
-                        do {
-                            responseObject = try ObjectSerializer.deserialize(type: ParagraphResponse.self, from: response!);
-                        }
-                        catch let deserializeError {
-                            responseError = deserializeError;
-                        }
-                    }
-                    callback(responseObject, responseError);
+                    callback(response, error);
                 }
             );
         }
@@ -11910,9 +12241,9 @@ public class WordsAPI {
 
     // Sync representation of insertParagraphWithoutNodePath method
     // Adds paragraph to document, returns added paragraph's data.
-    public func insertParagraphWithoutNodePath(request : InsertParagraphWithoutNodePathRequest) throws -> ParagraphResponse {
+    public func insertParagraphWithoutNodePath(request : InsertParagraphWithoutNodePathRequest) throws -> Data {
         let semaphore = DispatchSemaphore(value: 0);
-        var responseObject : ParagraphResponse? = nil;
+        var responseObject : Data? = nil;
         var responseError : Error? = nil;
         self.insertParagraphWithoutNodePath(request : request, callback: { response, error in
             responseObject = response;
@@ -14169,6 +14500,65 @@ public class WordsAPI {
         var responseObject : SaveResponse? = nil;
         var responseError : Error? = nil;
         self.saveAs(request : request, callback: { response, error in
+            responseObject = response;
+            responseError = error;
+            semaphore.signal();
+        });
+
+        _ = semaphore.wait();
+
+        if (responseError != nil) {
+            throw responseError!;
+        }
+        return responseObject!;
+    }
+
+    // Async representation of saveAsOnline method
+    // Converts document to destination format with detailed settings and saves result to storage.
+    public func saveAsOnline(request : SaveAsOnlineRequest, callback : @escaping (_ response : Data?, _ error : Error?) -> ()) {
+        do {
+            var rawPath = "/words/online/saveAs";
+            rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
+
+            let urlPath = (try self.configuration.getApiRootUrl()).appendingPathComponent(rawPath);
+            var urlBuilder = URLComponents(url: urlPath, resolvingAgainstBaseURL: false)!;
+            var queryItems : [URLQueryItem] = [];
+            if (request.getFontsLocation() != nil) {
+                queryItems.append(URLQueryItem(name: "fontsLocation", value: try ObjectSerializer.serializeToString(value: request.getFontsLocation()!)));
+            }
+
+            if (queryItems.count > 0) {
+                urlBuilder.queryItems = queryItems;
+            }
+            var formParams : [RequestFormParam] = [];
+            formParams.append(RequestFormParam(name: "document", body: try ObjectSerializer.serializeFile(value: request.getDocument())));
+
+            formParams.append(RequestFormParam(name: "saveOptionsData", body: try ObjectSerializer.serialize(value: request.getSaveOptionsData())));
+
+
+            apiInvoker.invoke(
+                url: urlBuilder.url!,
+                method: "PUT",
+                body: nil,
+                headers: nil,
+                formParams: formParams,
+                callback: { response, error in
+                    callback(response, error);
+                }
+            );
+        }
+        catch let error {
+            callback(nil, error);
+        }
+    }
+
+    // Sync representation of saveAsOnline method
+    // Converts document to destination format with detailed settings and saves result to storage.
+    public func saveAsOnline(request : SaveAsOnlineRequest) throws -> Data {
+        let semaphore = DispatchSemaphore(value: 0);
+        var responseObject : Data? = nil;
+        var responseError : Error? = nil;
+        self.saveAsOnline(request : request, callback: { response, error in
             responseObject = response;
             responseError = error;
             semaphore.signal();

@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="GetDocumentFieldNamesOnlineRequest.swift">
+ * <copyright company="Aspose" file="GetDocumentStatisticsOnlineRequest.swift">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,21 +27,27 @@
 
 import Foundation
 
-// Request model for getDocumentFieldNamesOnline operation.
-public class GetDocumentFieldNamesOnlineRequest {
+// Request model for getDocumentStatisticsOnline operation.
+public class GetDocumentStatisticsOnlineRequest {
     private let document : InputStream;
-    private let useNonMergeFields : Bool?;
+    private let includeComments : Bool?;
+    private let includeFootnotes : Bool?;
+    private let includeTextInShapes : Bool?;
 
     private enum CodingKeys: String, CodingKey {
         case document;
-        case useNonMergeFields;
+        case includeComments;
+        case includeFootnotes;
+        case includeTextInShapes;
         case invalidCodingKey;
     }
 
-    // Initializes a new instance of the GetDocumentFieldNamesOnlineRequest class.
-    public init(document : InputStream, useNonMergeFields : Bool? = nil) {
+    // Initializes a new instance of the GetDocumentStatisticsOnlineRequest class.
+    public init(document : InputStream, includeComments : Bool? = nil, includeFootnotes : Bool? = nil, includeTextInShapes : Bool? = nil) {
         self.document = document;
-        self.useNonMergeFields = useNonMergeFields;
+        self.includeComments = includeComments;
+        self.includeFootnotes = includeFootnotes;
+        self.includeTextInShapes = includeTextInShapes;
     }
 
     // The document.
@@ -49,8 +55,18 @@ public class GetDocumentFieldNamesOnlineRequest {
         return self.document;
     }
 
-    // If true, result includes "mustache" field names.
-    public func getUseNonMergeFields() -> Bool? {
-        return self.useNonMergeFields;
+    // Support including/excluding comments from the WordCount. Default value is "false".
+    public func getIncludeComments() -> Bool? {
+        return self.includeComments;
+    }
+
+    // Support including/excluding footnotes from the WordCount. Default value is "false".
+    public func getIncludeFootnotes() -> Bool? {
+        return self.includeFootnotes;
+    }
+
+    // Support including/excluding shape's text from the WordCount. Default value is "false".
+    public func getIncludeTextInShapes() -> Bool? {
+        return self.includeTextInShapes;
     }
 }

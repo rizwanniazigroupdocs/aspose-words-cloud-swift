@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="GetDocumentFieldNamesOnlineRequest.swift">
+ * <copyright company="Aspose" file="GetParagraphsOnlineRequest.swift">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,21 +27,32 @@
 
 import Foundation
 
-// Request model for getDocumentFieldNamesOnline operation.
-public class GetDocumentFieldNamesOnlineRequest {
+// Request model for getParagraphsOnline operation.
+public class GetParagraphsOnlineRequest {
+    private let nodePath : String;
     private let document : InputStream;
-    private let useNonMergeFields : Bool?;
+    private let loadEncoding : String?;
+    private let password : String?;
 
     private enum CodingKeys: String, CodingKey {
+        case nodePath;
         case document;
-        case useNonMergeFields;
+        case loadEncoding;
+        case password;
         case invalidCodingKey;
     }
 
-    // Initializes a new instance of the GetDocumentFieldNamesOnlineRequest class.
-    public init(document : InputStream, useNonMergeFields : Bool? = nil) {
+    // Initializes a new instance of the GetParagraphsOnlineRequest class.
+    public init(nodePath : String, document : InputStream, loadEncoding : String? = nil, password : String? = nil) {
+        self.nodePath = nodePath;
         self.document = document;
-        self.useNonMergeFields = useNonMergeFields;
+        self.loadEncoding = loadEncoding;
+        self.password = password;
+    }
+
+    // Path to the node which contains paragraphs.
+    public func getNodePath() -> String {
+        return self.nodePath;
     }
 
     // The document.
@@ -49,8 +60,13 @@ public class GetDocumentFieldNamesOnlineRequest {
         return self.document;
     }
 
-    // If true, result includes "mustache" field names.
-    public func getUseNonMergeFields() -> Bool? {
-        return self.useNonMergeFields;
+    // Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
+    public func getLoadEncoding() -> String? {
+        return self.loadEncoding;
+    }
+
+    // Password for opening an encrypted document.
+    public func getPassword() -> String? {
+        return self.password;
     }
 }

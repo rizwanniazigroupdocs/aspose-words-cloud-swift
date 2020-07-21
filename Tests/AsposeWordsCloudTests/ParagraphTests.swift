@@ -32,14 +32,17 @@ import XCTest
 class ParagraphTests: BaseTestContext {
     static var allTests = [
         ("testGetDocumentParagraphByIndex", testGetDocumentParagraphByIndex),
+        ("testGetDocumentParagraphOnline", testGetDocumentParagraphOnline),
         ("testGetDocumentParagraphByIndexWithoutNodePath", testGetDocumentParagraphByIndexWithoutNodePath),
         ("testGetDocumentParagraphs", testGetDocumentParagraphs),
+        ("testGetDocumentParagraphsOnline", testGetDocumentParagraphsOnline),
         ("testGetDocumentParagraphsWithoutNodePath", testGetDocumentParagraphsWithoutNodePath),
         ("testGetDocumentParagraphRun", testGetDocumentParagraphRun),
         ("testGetDocumentParagraphRunFont", testGetDocumentParagraphRunFont),
         ("testGetParagraphRuns", testGetParagraphRuns),
         ("testUpdateRunFont", testUpdateRunFont),
         ("testInsertParagraph", testInsertParagraph),
+        ("testInsertParagraphOnline", testInsertParagraphOnline),
         ("testInsertParagraphWithoutNodePath", testInsertParagraphWithoutNodePath),
         ("testRenderParagraph", testRenderParagraph),
         ("testRenderParagraphWithoutNodePath", testRenderParagraphWithoutNodePath),
@@ -47,6 +50,7 @@ class ParagraphTests: BaseTestContext {
         ("testGetParagraphFormatWithoutNodePath", testGetParagraphFormatWithoutNodePath),
         ("testUpdateParagraphFormat", testUpdateParagraphFormat),
         ("testDeleteParagraph", testDeleteParagraph),
+        ("testDeleteParagraphOnline", testDeleteParagraphOnline),
         ("testDeleteParagraphWithoutNodePath", testDeleteParagraphWithoutNodePath),
         ("testGetParagraphListFormat", testGetParagraphListFormat),
         ("testGetParagraphListFormatWithoutNodePath", testGetParagraphListFormatWithoutNodePath),
@@ -79,6 +83,12 @@ class ParagraphTests: BaseTestContext {
       _ = try super.getApi().getParagraph(request: request);
     }
 
+    // Test for getting paragraph online.
+    func testGetDocumentParagraphOnline() throws {
+      let request = GetParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "sections/0", index: 0);
+      _ = try super.getApi().getParagraphOnline(request: request);
+    }
+
     // Test for getting paragraph without node path.
     func testGetDocumentParagraphByIndexWithoutNodePath() throws {
       let remoteFileName = "TestGetDocumentParagraphByIndexWithoutNodePath.docx";
@@ -97,6 +107,12 @@ class ParagraphTests: BaseTestContext {
 
       let request = GetParagraphsRequest(name: remoteFileName, nodePath: "sections/0", folder: remoteDataFolder);
       _ = try super.getApi().getParagraphs(request: request);
+    }
+
+    // Test for getting all paragraphs online.
+    func testGetDocumentParagraphsOnline() throws {
+      let request = GetParagraphsOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "sections/0");
+      _ = try super.getApi().getParagraphsOnline(request: request);
     }
 
     // Test for getting all paragraphs without node path.
@@ -165,6 +181,16 @@ class ParagraphTests: BaseTestContext {
 
       let request = InsertParagraphRequest(name: remoteFileName, paragraph: requestParagraph, nodePath: "sections/0", folder: remoteDataFolder);
       _ = try super.getApi().insertParagraph(request: request);
+    }
+
+    // Test for adding paragraph online.
+    func testInsertParagraphOnline() throws {
+      let requestParagraph = ParagraphInsert();
+      requestParagraph.setText(text: "This is a new paragraph for your document");
+
+
+      let request = InsertParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, paragraph: requestParagraph, nodePath: "sections/0");
+      _ = try super.getApi().insertParagraphOnline(request: request);
     }
 
     // Test for adding paragraph without node path.
@@ -243,6 +269,12 @@ class ParagraphTests: BaseTestContext {
 
       let request = DeleteParagraphRequest(name: remoteFileName, nodePath: "", index: 0, folder: remoteDataFolder);
       try super.getApi().deleteParagraph(request: request);
+    }
+
+    // Test for deleting  a paragraph online.
+    func testDeleteParagraphOnline() throws {
+      let request = DeleteParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "", index: 0);
+      _ = try super.getApi().deleteParagraphOnline(request: request);
     }
 
     // Test for deleting  a paragraph without node path.

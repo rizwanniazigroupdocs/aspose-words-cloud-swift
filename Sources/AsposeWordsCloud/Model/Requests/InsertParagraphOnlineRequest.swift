@@ -1,6 +1,6 @@
 /*
  * --------------------------------------------------------------------------------
- * <copyright company="Aspose" file="InsertParagraphRequest.swift">
+ * <copyright company="Aspose" file="InsertParagraphOnlineRequest.swift">
  *   Copyright (c) 2020 Aspose.Words for Cloud
  * </copyright>
  * <summary>
@@ -27,13 +27,11 @@
 
 import Foundation
 
-// Request model for insertParagraph operation.
-public class InsertParagraphRequest {
-    private let name : String;
+// Request model for insertParagraphOnline operation.
+public class InsertParagraphOnlineRequest {
     private let nodePath : String;
+    private let document : InputStream;
     private let paragraph : ParagraphInsert;
-    private let folder : String?;
-    private let storage : String?;
     private let loadEncoding : String?;
     private let password : String?;
     private let destFileName : String?;
@@ -42,11 +40,9 @@ public class InsertParagraphRequest {
     private let insertBeforeNode : String?;
 
     private enum CodingKeys: String, CodingKey {
-        case name;
         case nodePath;
+        case document;
         case paragraph;
-        case folder;
-        case storage;
         case loadEncoding;
         case password;
         case destFileName;
@@ -56,13 +52,11 @@ public class InsertParagraphRequest {
         case invalidCodingKey;
     }
 
-    // Initializes a new instance of the InsertParagraphRequest class.
-    public init(name : String, nodePath : String, paragraph : ParagraphInsert, folder : String? = nil, storage : String? = nil, loadEncoding : String? = nil, password : String? = nil, destFileName : String? = nil, revisionAuthor : String? = nil, revisionDateTime : String? = nil, insertBeforeNode : String? = nil) {
-        self.name = name;
+    // Initializes a new instance of the InsertParagraphOnlineRequest class.
+    public init(nodePath : String, document : InputStream, paragraph : ParagraphInsert, loadEncoding : String? = nil, password : String? = nil, destFileName : String? = nil, revisionAuthor : String? = nil, revisionDateTime : String? = nil, insertBeforeNode : String? = nil) {
         self.nodePath = nodePath;
+        self.document = document;
         self.paragraph = paragraph;
-        self.folder = folder;
-        self.storage = storage;
         self.loadEncoding = loadEncoding;
         self.password = password;
         self.destFileName = destFileName;
@@ -71,29 +65,19 @@ public class InsertParagraphRequest {
         self.insertBeforeNode = insertBeforeNode;
     }
 
-    // The document name.
-    public func getName() -> String {
-        return self.name;
-    }
-
     // Path to the node which contains paragraphs.
     public func getNodePath() -> String {
         return self.nodePath;
     }
 
+    // The document.
+    public func getDocument() -> InputStream {
+        return self.document;
+    }
+
     // Paragraph data.
     public func getParagraph() -> ParagraphInsert {
         return self.paragraph;
-    }
-
-    // Original document folder.
-    public func getFolder() -> String? {
-        return self.folder;
-    }
-
-    // Original document storage.
-    public func getStorage() -> String? {
-        return self.storage;
     }
 
     // Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.
