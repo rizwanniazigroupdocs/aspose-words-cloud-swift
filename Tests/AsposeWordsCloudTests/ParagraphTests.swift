@@ -179,7 +179,7 @@ class ParagraphTests: BaseTestContext {
       requestParagraph.setText(text: "This is a new paragraph for your document");
 
 
-      let request = InsertParagraphRequest(name: remoteFileName, paragraph: requestParagraph, nodePath: "sections/0", folder: remoteDataFolder);
+      let request = InsertParagraphRequest(name: remoteFileName, nodePath: "sections/0", paragraph: requestParagraph, folder: remoteDataFolder);
       _ = try super.getApi().insertParagraph(request: request);
     }
 
@@ -189,7 +189,7 @@ class ParagraphTests: BaseTestContext {
       requestParagraph.setText(text: "This is a new paragraph for your document");
 
 
-      let request = InsertParagraphOnlineRequest(document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, nodePath: "sections/0", paragraph: requestParagraph);
+      let request = InsertParagraphOnlineRequest(nodePath: "sections/0", document: InputStream(url: self.getLocalTestDataFolder().appendingPathComponent(localFile, isDirectory: false))!, paragraph: requestParagraph);
       _ = try super.getApi().insertParagraphOnline(request: request);
     }
 
