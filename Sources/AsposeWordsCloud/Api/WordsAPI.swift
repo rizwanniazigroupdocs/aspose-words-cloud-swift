@@ -1204,6 +1204,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -1291,6 +1294,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -1385,6 +1391,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -1640,6 +1649,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -1723,6 +1735,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -1803,6 +1818,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -2001,6 +2019,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -2083,6 +2104,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -2408,6 +2432,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -2491,6 +2518,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -2573,6 +2603,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -2669,6 +2702,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -2919,6 +2955,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -3707,6 +3746,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -3788,6 +3830,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -4109,6 +4154,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -4193,6 +4241,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -4267,6 +4318,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -4338,6 +4392,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -5134,6 +5191,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -5215,6 +5275,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -5366,6 +5429,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -5447,6 +5513,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -5532,6 +5601,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -5613,6 +5685,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -6110,6 +6185,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -6191,6 +6269,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -6276,6 +6357,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -6359,6 +6443,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -6444,6 +6531,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -6525,6 +6615,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -6610,6 +6703,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -6693,6 +6789,9 @@ public class WordsAPI {
 
             if (request.getRangeEndIdentifier() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: try ObjectSerializer.serializeToString(value: request.getRangeEndIdentifier()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -7498,6 +7597,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -7746,6 +7848,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -7992,6 +8097,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -8164,6 +8272,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -8263,6 +8374,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -8361,6 +8475,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -8454,6 +8571,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -8737,6 +8857,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -8912,6 +9035,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -9196,6 +9322,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -10097,6 +10226,9 @@ public class WordsAPI {
             if (request.getRangeEndIdentifier() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: try ObjectSerializer.serializeToString(value: request.getRangeEndIdentifier()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -10185,6 +10317,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -10264,6 +10399,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -10421,6 +10559,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -10500,6 +10641,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -10670,6 +10814,9 @@ public class WordsAPI {
 
             if (request.getRangeEndIdentifier() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: try ObjectSerializer.serializeToString(value: request.getRangeEndIdentifier()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -10882,6 +11029,9 @@ public class WordsAPI {
 
             if (request.getRangeEndIdentifier() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: try ObjectSerializer.serializeToString(value: request.getRangeEndIdentifier()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{rangeEndIdentifier}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -11471,6 +11621,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -11659,6 +11812,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -11759,6 +11915,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -11938,6 +12097,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -12033,6 +12195,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -12316,6 +12481,9 @@ public class WordsAPI {
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
             }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
+            }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
 
@@ -12411,6 +12579,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
@@ -12973,6 +13144,9 @@ public class WordsAPI {
 
             if (request.getNodePath() != nil) {
                 rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: try ObjectSerializer.serializeToString(value: request.getNodePath()!));
+            }
+            else {
+                rawPath = rawPath.replacingOccurrences(of: "{nodePath}", with: "");
             }
 
             rawPath = rawPath.replacingOccurrences(of: "//", with: "/");
